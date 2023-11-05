@@ -37,8 +37,7 @@ function SignUpForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = signIn("credentials", {
-        id: "credential-register",
+      const res = signIn("credential-register", {
         redirect: false,
         ...values,
       });

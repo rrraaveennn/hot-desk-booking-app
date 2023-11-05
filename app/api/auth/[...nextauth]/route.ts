@@ -162,6 +162,7 @@ export const AuthOptions: NextAuthOptions = {
                 token.id = u.id;
                 token.firstName = u.firstName;
                 token.lastName = u.lastName;
+                token.email = u.email;
                 token.role = u.role;
             }
 
@@ -175,6 +176,7 @@ export const AuthOptions: NextAuthOptions = {
                     id: token.id,
                     firstName: token.firstName,
                     lastName: token.lastName,
+                    email: token.email,
                     role: token.role
                 }
             }

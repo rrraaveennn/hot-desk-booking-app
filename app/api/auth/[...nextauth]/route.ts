@@ -47,7 +47,8 @@ export const AuthOptions: NextAuthOptions = {
                     label: "Password",
                     type: "password"
                 },
-                async authorize(credentials: any) {
+            },
+            async authorize(credentials: any) {
                     if (!credentials || !credentials.email || !credentials.password) {
                         throw new Error("Invalid credentials");
                     }
@@ -79,7 +80,6 @@ export const AuthOptions: NextAuthOptions = {
                         role: data.role
                     };
                 }
-            }
         })
     ],
     debug: process.env.NODE_ENV === "development",

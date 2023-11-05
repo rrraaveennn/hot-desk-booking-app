@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <div>
-      Hello {session?.user.firstName}!
+      <h1>Hello {session?.user.firstName}!</h1>
       {!session?.user ? <SignInButton provider="google" /> : <SignOutButton />}
     </div>
   );

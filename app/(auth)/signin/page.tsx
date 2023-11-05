@@ -1,6 +1,6 @@
 "use client";
 
-import Form from "./_components/SignInForm";
+import Form from "../_components/SignInForm";
 import {
   Card,
   CardContent,
@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 import { signIn } from "next-auth/react";
 
@@ -26,7 +27,8 @@ function SignIn() {
         <CardContent>
           <Form />
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col items-center">
+          <Separator />
           <div className="flex flex-col justify-center items center space-y-4">
             <Button variant="outline" onClick={() => signIn("google")}>
               Sign in with Google

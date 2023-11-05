@@ -32,7 +32,7 @@ function SignInForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const res = signIn("credentials", {
+    const res = signIn("credential-login", {
       redirect: false,
       ...values,
     });
@@ -71,7 +71,7 @@ function SignInForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" className="text-xs sm:text-sm">
+          <Button type="submit" className="text-xs sm:text-sm items-end">
             Submit
           </Button>
         </form>

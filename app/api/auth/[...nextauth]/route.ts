@@ -37,7 +37,8 @@ export const AuthOptions: NextAuthOptions = {
             }
         }),
         CredentialsProvider({
-            name: "credentials",
+            id: "credential-login",
+            name: "login",
             credentials: {
                 email: {
                     label: "Email",
@@ -80,6 +81,67 @@ export const AuthOptions: NextAuthOptions = {
                         role: data.role
                     };
                 }
+        }),
+        CredentialsProvider({
+            id: "credential-register",
+            name: "register",
+            credentials: {
+                firstName: {
+                    label: "First Name",
+                    type: "text"
+                },
+                lastName: {
+                    label: "Last Name",
+                    type: "text"
+                },
+                email: {
+                    label: "Email",
+                    type: "text"
+                },
+                password: {
+                    label: "Password",
+                    type: "password"
+                },
+            },
+            async authorize(credentials: any) {
+                    if (!credentials || !credentials.firstName || !credentials.lastName || !credentials.email || !credentials.password) {
+                        throw new Error("Invalid credentials");
+                    }
+
+                    const isValid = credentialSchema.safeParse(credentials);
+
+                    if (!isValid.success) throw new Error("Invalid Credentials");
+
+                    const user = credentials;
+    
+                    const newPass = await bcrypt.hash(user.password, 10);
+
+                    if (!newPass) throw new Error("Invalid Credentials");
+
+                    const data = await prisma.user.create({
+                        data: {
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                            password: newPass
+                        }
+                    });
+
+                    if (!data) throw new Error("Invalid Credentials");
+
+                    const hash = await bcrypt.compare(user.password, data.password as string);
+
+                    if (!hash) throw new Error("Invalid Credentials");
+
+                    return {
+                        id: data.id,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        image: data.image,
+                        role: data.role
+                    };
+                }
         })
     ],
     debug: process.env.NODE_ENV === "development",
@@ -89,9 +151,9 @@ export const AuthOptions: NextAuthOptions = {
     },
     callbacks: {
         async signIn({ account, profile }) {
-            if (account?.provider === "google") {
-                return profile!.email!.endsWith("@student.laverdad.edu.ph");
-            }
+            // if (account?.provider === "google") {
+            //     return profile!.email!.endsWith("@student.laverdad.edu.ph");
+            // }
             return true;
         },
         async jwt({ token, user }) {

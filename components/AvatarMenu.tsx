@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu";
 
 function AvatarMenu() {
@@ -39,8 +39,15 @@ function AvatarMenu() {
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-
-          <DropdownMenuItem>Sign out</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Button
+              variant={null}
+              className="p-0 h-4"
+              onClick={() => signOut()}
+            >
+              Sign out
+            </Button>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

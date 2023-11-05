@@ -10,7 +10,6 @@ export default async function Home() {
   return (
     <div className="p-6 bg-slate-100">
       <h1>Hello {session?.user.firstName}!</h1>
-      {!session?.user ? <SignInButton provider="google" /> : <SignOutButton />}
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam commodi
         ex aliquid quod deserunt, nulla sequi veniam suscipit earum magnam

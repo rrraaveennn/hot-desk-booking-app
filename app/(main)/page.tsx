@@ -8,7 +8,7 @@ export default async function Home() {
   const session = await getSession();
 
   return (
-    <div className="p-6 bg-slate-100">
+    <div className="p-6">
       <h1>Hello {session?.user.firstName}!</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam commodi

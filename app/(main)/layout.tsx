@@ -11,7 +11,7 @@ interface Prop {
 
 function layout({ children }: Prop) {
   return (
-    <div className="min-h-screen flex overflow-hidden bg-slate-100">
+    <div className="min-h-screen flex overflow-hidden">
       <SideBar />
       <div className="relative flex flex-col sm:ml-72 w-full">
         <Header />

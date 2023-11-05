@@ -12,6 +12,7 @@ import {
 import { Button } from "./ui/button";
 import { useSession, signOut } from "next-auth/react";
 import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu";
+import { ModeToggle } from "./ModeToggler";
 
 function AvatarMenu() {
   const { data: session } = useSession();
@@ -35,7 +36,9 @@ function AvatarMenu() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>Dark mode</DropdownMenuItem>
+            <DropdownMenuItem className="p-0">
+              <ModeToggle />
+            </DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />

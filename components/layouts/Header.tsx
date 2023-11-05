@@ -29,6 +29,7 @@ function Header() {
           {Routes.map((item) => {
             return (
               <Button
+                key={item.name}
                 variant={null}
                 className="w-full flex justify-start p-2"
                 asChild

@@ -26,8 +26,8 @@ function SideBarSheet({ children, title, description }: Prop) {
     <div className="w-full">
       <Sheet>
         <SheetTrigger asChild className="sm:hidden">
-          <Button variant="outline">
-            <FiMenu />
+          <Button variant={null}>
+            <FiMenu className="w-6 h-6" />
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="sm:hidden">

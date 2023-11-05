@@ -20,7 +20,7 @@ const Routes = [
 
 function SideBar() {
   return (
-    <div className="z-20 w-72 p-5 h-screen fixed top-0 left-0 hidden border-r bg-slate-100 border-r-slate-300 sm:block">
+    <div className="z-20 w-72 p-5 h-screen fixed top-0 left-0 hidden border-r border-r-slate-300 sm:block">
       <div className="h-20 flex space-x-3">
         <h1>HotDeskBooking</h1>
       </div>
@@ -28,6 +28,7 @@ function SideBar() {
         {Routes.map((item) => {
           return (
             <Button
+              key={item.name}
               variant={null}
               className="w-full flex justify-start px-4 py-2 gap-3"
               asChild

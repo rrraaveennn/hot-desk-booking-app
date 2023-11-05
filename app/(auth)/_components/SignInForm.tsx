@@ -32,7 +32,8 @@ function SignInForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const res = signIn("credential-login", {
+    const res = signIn("credentials", {
+      id: "credential-login",
       redirect: false,
       ...values,
     });

@@ -27,7 +27,7 @@ function SignIn() {
         <CardContent>
           <Form />
         </CardContent>
-        <CardFooter className="flex flex-col items-center">
+        <CardFooter className="flex flex-col items-center space-y-4">
           <Separator />
           <div className="flex flex-col justify-center items center space-y-4">
             <Button variant="outline" onClick={() => signIn("google")}>

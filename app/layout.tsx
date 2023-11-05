@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import SessionProvider from "@/components/providers/session-provider";
+import { getSession } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,14 +11,17 @@ export const metadata: Metadata = {
   description: "Hot desk booking web application",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <SessionProvider session={session}>
+        <body className={inter.className}>{children}</body>
+      </SessionProvider>
     </html>
   );
 }

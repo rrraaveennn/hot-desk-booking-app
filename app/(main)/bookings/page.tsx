@@ -14,7 +14,7 @@ import axios from "axios";
 async function getBookings() {
   const session = await getSession();
 
-  const res = await fetch("http://localhost:3000/api/bookings");
+  const res = await fetch("https://bookit-edan.onrender.com/api/bookings");
 
   const data = await res.json();
   return data;

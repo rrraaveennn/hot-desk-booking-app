@@ -4,13 +4,12 @@ import { Role } from "@prisma/client";
 declare module "next-auth" {
     interface Session {
         user: {
-            id?: string | null | undefined;
+            id: string | null | undefined;
             firstName?: string | null | undefined;
             lastName?: string | null | undefined;
-            email?: string | null | undefined;
-            role?: string | null | undefined;
+            email: string | null | undefined;
+            role: string | null | undefined;
             image?: string | null | undefined;
-            role?: string | null | undefined;
         }
     }
 

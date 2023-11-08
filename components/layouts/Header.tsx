@@ -6,24 +6,37 @@ import Link from "next/link";
 import { MdOutlineDesk } from "react-icons/md";
 import { BiBookBookmark } from "react-icons/bi";
 import AvatarMenu from "../AvatarMenu";
+import { ModeToggle } from "../ModeToggler";
+
+import { FaUsers } from "react-icons/fa";
+import { GoHome } from "react-icons/go";
 
 const Routes = [
   {
-    name: "bookings",
+    name: "Employees",
+    path: "/employees",
+    icon: (options: string) => <FaUsers className={options} />,
+  },
+  {
+    name: "Home",
+    path: "/home",
+    icon: (options: string) => <GoHome className={options} />,
+  },
+  {
+    name: "Bookings",
     path: "/bookings",
-
     icon: (options: string) => <BiBookBookmark className={options} />,
   },
   {
-    name: "office",
-    path: "/office",
+    name: "Desk",
+    path: "/desk",
     icon: (options: string) => <MdOutlineDesk className={options} />,
   },
 ];
 
 function Header() {
   return (
-    <div className="z-10 h-20 w-full fixed top-0 right-0 border-b border-slate-300 sm:pl-72">
+    <div className="z-10 h-20 w-full fixed top-0 right-0 border-b border-slate-300 dark:border-b-slate-800 sm:pl-72">
       <div className="h-full flex justify-between items-center px-6">
         <SideBarSheet title="HotDeskBooking">
           {Routes.map((item) => {
@@ -45,7 +58,10 @@ function Header() {
             );
           })}
         </SideBarSheet>
-        <AvatarMenu />
+        <div className="flex items-center justify-start gap-3">
+          <AvatarMenu />
+          <ModeToggle />
+        </div>
       </div>
     </div>
   );

@@ -12,9 +12,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function SignIn() {
+  const { status } = useSession();
+  const router = useRouter();
+
+  if (status === "authenticated") router.push("/");
+
   return (
     <div className="h-screen py-5 flex justify-center items-center">
       <Card className="sm:py-4 sm:px-2">

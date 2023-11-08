@@ -183,6 +183,10 @@ export const AuthOptions: NextAuthOptions = {
 
             return data;
         }
+    },
+    pages: {
+        signIn: '/signin',
+        newUser: '/signup'
     }
 }
 

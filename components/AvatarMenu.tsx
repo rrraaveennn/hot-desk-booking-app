@@ -18,7 +18,7 @@ function AvatarMenu() {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div className="">
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
           <Avatar>
@@ -28,17 +28,15 @@ function AvatarMenu() {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>
-            {session?.user.firstName}
-            {session?.user.lastName}
+            {session?.user.firstName} {session?.user.lastName}
+            <br />
             <span className="text-xs text-slate-400 dark:text-100">
               {session?.user.email}
             </span>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem className="p-0">
-              <ModeToggle />
-            </DropdownMenuItem>
+            <DropdownMenuItem className="p-0"></DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />

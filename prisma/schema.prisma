@@ -73,9 +73,9 @@ model Booking {
   userId    String        @db.ObjectId
   deskId    String        @db.ObjectId
   status    BookingStatus @default(pending)
-  startedAt DateTime      @db.Timestamp
-  endedAt   DateTime      @db.Timestamp
-  bookedAt  DateTime      @db.Timestamp
+  startedAt String
+  endedAt   String
+  bookedAt  String
   updatedAt DateTime      @updatedAt @db.Timestamp
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -90,7 +90,6 @@ enum Role {
 
 enum DeskStatus {
   available
-  booked
   disabled
 }
 

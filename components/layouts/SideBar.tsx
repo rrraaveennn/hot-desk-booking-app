@@ -41,7 +41,7 @@ function SideBar() {
             <Button
               key={item.name}
               variant={null}
-              className="w-full flex justify-start px-4 py-2 gap-3"
+              className="w-full flex justify-start px-4 py-2 gap-3 transition-colors duration ease-in hover:bg-slate-100 hover:dark:bg-slate-900"
               asChild
             >
               <Link href={item.path}>

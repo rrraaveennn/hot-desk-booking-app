@@ -49,7 +49,7 @@ function Header() {
               >
                 <Link
                   href={item.path}
-                  className="flex justify-start items-center gap-3"
+                  className="flex justify-start items-center gap-3 transition-colors duration-75 ease-in hover:bg-slate-100 hover:dark:bg-slate-900"
                 >
                   {item.icon("w-6 h-6")}
                   {item.name}

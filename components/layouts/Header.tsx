@@ -36,7 +36,7 @@ const Routes = [
 
 function Header() {
   return (
-    <div className="z-10 h-20 w-full fixed top-0 right-0 border-b border-slate-300 dark:border-b-slate-800 sm:pl-72">
+    <div className="z-10 h-20 w-full fixed top-0 right-0 border-b border-slate-300 bg-white dark:bg-slate-950 dark:border-b-slate-800 sm:pl-72">
       <div className="h-full flex justify-between items-center px-6">
         <SideBarSheet title="HotDeskBooking">
           {Routes.map((item) => {

@@ -33,7 +33,7 @@ function Desk() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const str = data.dob.toLocaleDateString();
     const res = await axios.get(
-      `https://bookit-edan.onrender.com/api/bookings/${str}`
+      `https://desk-booking.onrender.com/api/bookings/${str}`
     );
 
     const bookings = res.data;

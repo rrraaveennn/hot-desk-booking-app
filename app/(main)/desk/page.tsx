@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import z from "zod";
+import { getAvailableDesks } from "@/actions/actions";
 
 import {
   Card,
@@ -31,15 +32,10 @@ function Desk() {
   const [Bookings, setBookings] = useState<string[]>([]);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const str = data.dob.toLocaleDateString();
-    const res = await axios.get(
-      `https://desk-booking.onrender.com/api/bookings/${str}`
-    );
+    const result = await getAvailableDesks(data);
 
-    const bookings = res.data;
-    if (!bookings.message) setBookings([...bookings.data]);
     toast({
-      description: <p>{str}</p>,
+      description: <p>{JSON.stringify(result)}</p>,
     });
   }
   return (

@@ -21,6 +21,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { UseFormReturn } from "react-hook-form";
+import { useFormStatus } from "react-dom";
 
 const FormSchema = z.object({
   dob: z.date({
@@ -36,6 +37,8 @@ interface Prop {
 }
 
 export function DateTimePicker({ label, description, form, onSubmit }: Prop) {
+  const { pending } = useFormStatus();
+
   return (
     <Form {...form}>
       <form
@@ -83,7 +86,12 @@ export function DateTimePicker({ label, description, form, onSubmit }: Prop) {
           )}
         />
         <div className="h-full">
-          <Button size="sm" className="w-full" type="submit" disabled>
+          <Button
+            size="sm"
+            className="w-full"
+            type="submit"
+            aria-disabled={pending}
+          >
             Show
           </Button>
         </div>

@@ -23,7 +23,7 @@ function Footer() {
         </Link>
         <Link
           className="text-xs font-medium text-slate-600 transition-colors duration-75 ease-in hover:text-slate-400"
-          href="https://www.termsandconditionsgenerator.com/live.php?token=PdpUwBeiWejWjoz8FkuTNxFBvoQkiTGM"
+          href="https://www.termsandconditionsgenerator.com/live.php?token=PdpUwBeiWejWjoz8FkuTNxFBvoQkiTGM "
           target="_"
         >
           Terms and Conditions

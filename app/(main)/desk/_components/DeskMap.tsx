@@ -1,3 +1,6 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import BookDesk from "./BookDesk";
 
 interface Prop {
   bookings: any;
@@ -20,13 +24,7 @@ function DeskMap({ bookings }: Prop) {
           <CardDescription>{""}</CardDescription>
         </CardHeader>
         <CardContent className="flex justify-center items-center">
-          <Image
-            alt="desk map"
-            src={require("@/public/office-deskmap.png")}
-            height={500}
-            width={700}
-          />
-          {JSON.stringify(bookings)}
+          <BookDesk />
         </CardContent>
         <CardFooter></CardFooter>
       </Card>

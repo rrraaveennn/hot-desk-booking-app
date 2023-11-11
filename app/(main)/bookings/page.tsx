@@ -7,18 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { formatRelative } from "date-fns";
 
 import { Separator } from "@/components/ui/separator";
-import axios from "axios";
-
-async function getBookings() {
-  const session = await getSession();
-
-  const res = await fetch("https://desk-booking.onrender.com/api/bookings");
-
-  const data = await res.json();
-  return data;
-}
+import { getBookings } from "@/actions/actions";
+import Image from "next/image";
 
 async function Bookings() {
   const bookings = await getBookings();
@@ -28,13 +21,26 @@ async function Bookings() {
       <Card className="">
         <CardHeader className="">
           <CardTitle>Bookings</CardTitle>
-          <CardDescription className="pb-3">
-            Shows your booked desks.
-          </CardDescription>
-          <Separator orientation="horizontal" />
+          <CardDescription>Shows your booked desks.</CardDescription>
         </CardHeader>
-        <CardContent>{JSON.stringify(bookings)}</CardContent>
       </Card>
+      <div className="grid grid-cols-1 grid-flow-row">
+        <div className="w-full flex py-5 px-10 gap-5 border border-slate-800 rounded-lg">
+          <div className="flex flex-col gap-1">
+            <h1>
+              {bookings[0].desk.status === "available" && bookings[0].desk.name}{" "}
+              {bookings[0].status}
+            </h1>
+            <h2>
+              starts: {bookings[0].startedAt.getUTCHours()}:
+              {bookings[0].startedAt.getMinutes()} ends:{" "}
+              {bookings[0].endedAt.getUTCHours()}:
+              {bookings[0].endedAt.getMinutes()}
+            </h2>
+            <p>{formatRelative(Date.now(), bookings[0].bookedAt)}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

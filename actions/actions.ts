@@ -49,27 +49,9 @@ async function getAvailableDesks(value: z.infer<typeof FormSchema>) {
     const parsed = FormSchema.safeParse(value);
 
     if (parsed.success) {
-        const data = await prisma.booking.findMany({
-            include: {
-                desk: true
-            }
-        });
-
-        const filteredDates = data.map((item) => {
-            return ((item.bookedAt.getDate() === value.dob.getDate()) &&
-                (item.bookedAt.getMonth() === value.dob.getMonth())
-                &&
-                (item.bookedAt.getFullYear() === value.dob.getFullYear()) &&
-                (item.desk.status === DeskStatus.available) && item)
-        });
-
-        if (!filteredDates[0]) {
-            return {
-                message: "No Bookings"
-            }
-        }
-        return filteredDates
+        
     }
+
     return {
         message: "Validation Failed"
     }

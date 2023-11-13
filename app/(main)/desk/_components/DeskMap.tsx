@@ -24,12 +24,13 @@ import ImageMapper from "react-img-mapper";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { getAvailableDesks } from "@/actions/actions";
+import { Separator } from "@/components/ui/separator";
 
 interface Prop {
   bookings: any;
 }
 
-function DeskMap({ bookings }: Prop) {
+function DeskMap() {
   const [dialog, setDialog] = useState<boolean>(false);
   const [deskHover, setDeskHover] = useState<boolean>(false);
   const [id, setId] = useState<string>("");
@@ -38,12 +39,25 @@ function DeskMap({ bookings }: Prop) {
     <>
       <Card>
         <CardHeader>
-          <CardDescription>{""}</CardDescription>
+          <CardDescription>
+            <div className="flex justify-start items-center gap-10 pb-3">
+              <p className="font-bold">Desk Status:</p>
+              <p className="flex gap-3 items-center">
+                <span className="font-semibold text-xs">Available</span>
+                <span className="inline-block h-3 w-3 rounded-full bg-green-700"></span>
+              </p>
+              <p className="flex gap-3 items-center">
+                <span className="font-semibold text-xs">Disabled</span>
+                <span className="inline-block h-3 w-3 rounded-full bg-slate-700"></span>
+              </p>
+            </div>
+            {/* <Separator orientation="horizontal" /> */}
+          </CardDescription>
         </CardHeader>
-        <CardContent className="flex justify-center items-center">
+        <CardContent className="flex justify-start items-center">
           {/* <BookDesk /> */}
           <ImageMapper
-            src={require("../../../../public/office-map-templates/385541251_888483362327970_3808793248328858061_n.png")}
+            src="https://raw.githubusercontent.com/img-mapper/react-docs/master/src/assets/example.jpg"
             onClick={(e) => {
               setDialog(true);
               setId(e.id!);
@@ -57,8 +71,8 @@ function DeskMap({ bookings }: Prop) {
               setId("");
               setDeskHover(false);
             }}
-            width={600}
-            height={600}
+            width={500}
+            height={500}
             map={{
               name: "desk-map",
               areas: [

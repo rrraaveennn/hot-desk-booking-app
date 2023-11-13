@@ -38,6 +38,14 @@ interface Prop {
 
 export function DateTimePicker({ label, description, form, onSubmit }: Prop) {
   const { pending } = useFormStatus();
+  const currentDate = new Date();
+  const prevDate = {
+    year: currentDate.getFullYear(),
+    month: currentDate.getMonth(),
+    day: currentDate.getDate() - 1,
+    hours: currentDate.getHours(),
+    minutes: currentDate.getMinutes(),
+  };
 
   return (
     <Form {...form}>
@@ -75,7 +83,16 @@ export function DateTimePicker({ label, description, form, onSubmit }: Prop) {
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
-                    disabled={(date) => date < new Date()}
+                    disabled={(date) =>
+                      date <
+                      new Date(
+                        prevDate.year,
+                        prevDate.month,
+                        prevDate.day,
+                        prevDate.hours,
+                        prevDate.minutes
+                      )
+                    }
                     initialFocus
                   />
                 </PopoverContent>

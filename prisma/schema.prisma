@@ -59,13 +59,26 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Floor {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  floor     String   @unique
+  image     String?
+  createdAt DateTime @db.Timestamp
+  updatedAt DateTime @db.Timestamp
+  Desk      Desk[]
+}
+
 model Desk {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  name      String?
-  status    DeskStatus @default(available)
-  createdAt DateTime   @default(now()) @db.Timestamp
-  updatedAt DateTime   @updatedAt @db.Timestamp
-  Booking   Booking[]
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  floorId     String     @db.ObjectId
+  name        String     @unique
+  coordinates Int[]
+  status      DeskStatus @default(available)
+  createdAt   DateTime   @default(now()) @db.Timestamp
+  updatedAt   DateTime   @updatedAt @db.Timestamp
+
+  Floor   Floor     @relation(fields: [floorId], references: [id], onDelete: Cascade)
+  Booking Booking[]
 }
 
 model Booking {
@@ -90,11 +103,13 @@ enum Role {
 
 enum DeskStatus {
   available
+  occupied
   disabled
 }
 
 enum BookingStatus {
   pending
+  rejected
   confirmed
   started
   ended

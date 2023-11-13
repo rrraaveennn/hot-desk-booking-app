@@ -47,6 +47,10 @@ function DeskMap() {
                 <span className="inline-block h-3 w-3 rounded-full bg-green-700"></span>
               </p>
               <p className="flex gap-3 items-center">
+                <span className="font-semibold text-xs">Occupied</span>
+                <span className="inline-block h-3 w-3 rounded-full bg-cyan-700"></span>
+              </p>
+              <p className="flex gap-3 items-center">
                 <span className="font-semibold text-xs">Disabled</span>
                 <span className="inline-block h-3 w-3 rounded-full bg-slate-700"></span>
               </p>

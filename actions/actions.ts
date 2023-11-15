@@ -4,6 +4,7 @@ import { getSession } from "@/app/api/auth/[...nextauth]/route"
 import z from "zod";
 import prisma from "@/lib/db";
 import { DeskStatus } from "@prisma/client";
+import { Session } from "next-auth";
 
 const FormSchema = z.object({
     dob: z.date({

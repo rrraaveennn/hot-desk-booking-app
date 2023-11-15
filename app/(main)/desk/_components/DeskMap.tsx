@@ -75,8 +75,7 @@ function DeskMap() {
               setId("");
               setDeskHover(false);
             }}
-            width={500}
-            height={500}
+            
             map={{
               name: "desk-map",
               areas: [

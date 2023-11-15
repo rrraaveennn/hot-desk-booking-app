@@ -4,6 +4,8 @@ export const config = {
     matcher: [
         '/',
         '/bookings',
-        '/desk'
+        '/desk',
+        '/home',
+        '/employees'
     ]
 }

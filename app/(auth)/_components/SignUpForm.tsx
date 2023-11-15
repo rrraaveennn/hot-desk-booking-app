@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const formSchema = z.object({
   firstName: z.string().min(2),
@@ -106,7 +107,13 @@ function SignUpForm() {
               </FormItem>
             )}
           />
-          <div className="flex justify-end">
+          <div className="flex justify-between items-center">
+            <p className="text-sm">
+              Already have an account?{" "}
+              <Link href="/signin" className="inline font-semibold">
+                Sign in
+              </Link>
+            </p>
             <Button type="submit">Submit</Button>
           </div>
         </form>

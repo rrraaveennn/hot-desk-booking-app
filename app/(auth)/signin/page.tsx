@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function SignIn() {
   const { status } = useSession();
@@ -40,8 +41,20 @@ function SignIn() {
               Sign in with Google
             </Button>
             <p className="text-xs text-slate-500">
-              By creating an account, you agree to our Terms of Service and
-              Privacy Policy.
+              By creating an account, you agree to our{" "}
+              <Link
+                href="https://www.termsandconditionsgenerator.com/live.php?token=PdpUwBeiWejWjoz8FkuTNxFBvoQkiTGM"
+                className="inline font-semibold"
+              >
+                Terms & Conditions
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="https://www.termsfeed.com/live/692e4cf6-fab6-4248-b2d1-f70df161dd08"
+                className="inline font-semibold"
+              >
+                Privacy Policy
+              </Link>
             </p>
           </div>
         </CardFooter>

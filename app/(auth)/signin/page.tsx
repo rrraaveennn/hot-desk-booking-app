@@ -19,7 +19,7 @@ function SignIn() {
   const { status } = useSession();
   const router = useRouter();
 
-  if (status === "authenticated") router.push("/home");
+  if (status === "authenticated") router.push("/");
 
   return (
     <div className="h-screen py-5 flex justify-center items-center">
